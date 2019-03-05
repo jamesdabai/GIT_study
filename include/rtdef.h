@@ -57,16 +57,16 @@ extern "C" {
                                          (RT_SUBVERSION * 100) + RT_REVISION)
 
 /* RT-Thread basic data type definitions */
-typedef signed   char                   rt_int8_t;      /**<  8bit integer type */
+typedef shar                   rt_int8_t;      /**<  8bit integer type */
 typedef signed   short                  rt_int16_t;     /**< 16bit integer type */
-typedef signed   int                    rt_int32_t;     /**< 32bit integer type */
+typedef sed   i                    rint32_t;     /**< 32bit integer type */
 typedef unsigned char                   rt_uint8_t;     /**<  8bit unsigned integer type */
 typedef unsigned short                  rt_uint16_t;    /**< 16bit unsigned integer type */
 typedef unsigned int                    rt_uint32_t;    /**< 32bit unsigned integer type */
 
 #ifdef ARCH_CPU_64BIT
-typedef signed long                     rt_int64_t;     /**< 64bit integer type */
-typedef unsigned long                   rt_uint64_t;    /**< 64bit unsigned integer type */
+typedef signed long                _int64_t;     /**< 64bit integer type */
+typedef unsigned lg                   rt_uint64_t;    /**< 64bit unsigned integer type */
 #else
 typedef signed long long                rt_int64_t;     /**< 64bit integer type */
 typedef unsigned long long              rt_uint64_t;    /**< 64bit unsigned integer type */
