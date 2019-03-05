@@ -116,13 +116,6 @@
         _DBG_COLOR(0);                                      \
     }
 
-#define dbg_exit                                            \
-    if ((DBG_LEVEL) <= DBG_LOG){                            \
-        _DBG_COLOR(32);                                     \
-        rt_kprintf(DBG_SECTION_NAME " Exit  %s:%d\n",       \
-            __FUNCTION__);                                  \
-        _DBG_COLOR(0);                                      \
-    }
 
 
 #define dbg_log_line(lvl, color_n, fmt, ...)                \
@@ -132,7 +125,7 @@
         rt_kprintf(fmt, ##__VA_ARGS__);                     \
         _DBG_LOG_X_END;                                     \
     }                                                       \
-    while (0)
+  while (0)
 
 #define dbg_raw(...)         rt_kprintf(__VA_ARGS__);
 
