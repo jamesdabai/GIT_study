@@ -1,0 +1,20 @@
+Import('rtconfig')
+import os
+from building import *
+
+Import('APP_ROOT')
+Import('SDK_ROOT')
+Import('RTT_PLATFORM_ROOT')
+
+cwd = GetCurrentDir()
+path_inc = [SDK_ROOT + '/include']
+
+path_inc += [SDK_ROOT]
+path_inc += [APP_ROOT + '/include']
+
+CPPPATH = [cwd]
+
+src	= Glob('*.c')
+group = DefineGroup('aestest', src, depend = [''],  CPPPATH = CPPPATH, LOCAL_CPPPATH = path_inc)
+
+Return('group')

@@ -1,0 +1,25 @@
+Import('rtconfig')
+Import('RTT_ROOT')
+from building import *
+cwd  = GetCurrentDir()
+
+src	= Glob('*.c')
+path_inc = [cwd]
+
+cpath = [RTT_ROOT + '/libcpu/' + rtconfig.ARCH + '/' + rtconfig.CPU, RTT_ROOT + '/libcpu/' + rtconfig.ARCH + '/common']
+cpath += [RTT_ROOT + '/include' ]
+cpath += [RTT_ROOT + '/components/drivers/include' ]
+cpath += [RTT_ROOT + '/components/drivers/spi' ]
+cpath += [RTT_ROOT + '/components/finsh' ]
+cpath += [RTT_ROOT + '/../components/time' ]
+cpath += [RTT_ROOT + '/../drivers' ]
+cpath += [RTT_ROOT + '/../Libraries' ]
+cpath += [RTT_ROOT + '/../' ]
+cpath += [RTT_ROOT + '/../platform' ]
+cpath += [RTT_ROOT + '/../platform/plat-v2' ]
+cpath += [RTT_ROOT + '/../platform/startup' ]
+ 
+
+group = DefineGroup('main', src, depend = [''], LOCAL_CPPPATH = path_inc, CPPPATH = cpath)
+
+Return('group')

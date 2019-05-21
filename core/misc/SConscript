@@ -1,0 +1,23 @@
+Import('rtconfig')
+import os
+from building import *
+
+Import('SDK_ROOT')
+Import('APP_ROOT')
+
+cwd = GetCurrentDir()
+path_inc = [APP_ROOT + '/common/inc']
+path_inc += [APP_ROOT + '/src/include']
+path_inc += [APP_ROOT + '/security']
+path_inc += [SDK_ROOT + '/extlib/inc']
+path_inc += [SDK_ROOT + '/extlib']
+path_inc += [SDK_ROOT + '/extlib/inc/isp']
+path_inc += [SDK_ROOT]
+
+CPPPATH = [cwd]
+CPPPATH += [APP_ROOT + '/src/include']
+src = Glob('*.c')
+
+
+group = DefineGroup('misc', src, depend = [''], CPPPATH = CPPPATH, LOCAL_CPPPATH = path_inc)
+Return('group')

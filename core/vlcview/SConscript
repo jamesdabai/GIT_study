@@ -1,0 +1,27 @@
+
+
+Import('rtconfig')
+import os
+from building import *
+
+Import('SDK_ROOT')
+Import('APP_ROOT')
+
+path_inc = [APP_ROOT + '/common/inc']
+path_inc += [APP_ROOT + '/include']
+path_inc += [SDK_ROOT + '/extlib/inc']
+path_inc += [SDK_ROOT + '/extlib']
+path_inc += [SDK_ROOT + '/extlib/inc/isp']
+path_inc += [SDK_ROOT + '/components']
+path_inc += [SDK_ROOT]
+
+src	= Glob('*.c')
+LIBPATH = [APP_ROOT+'/src/zbar/lib']
+LIBPATH += [APP_ROOT+'/src/newtologic']
+LIBS = ['xgdzbar']
+LIBS += ['new2swift']
+
+group = DefineGroup('sample_vlcview', src, depend = ['RT_USING_SAMPLE_VLCVIEW'], LIBS = LIBS, LIBPATH = LIBPATH, LOCAL_CPPPATH = path_inc)
+
+
+Return('group')

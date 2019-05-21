@@ -1,0 +1,18 @@
+Import('rtconfig')
+import os
+from building import *
+
+Import('SDK_ROOT')
+Import('APP_ROOT')
+
+cwd = GetCurrentDir()
+
+path_inc = [APP_ROOT + '/common/inc']
+path_inc += [APP_ROOT + '/include']
+
+CPPPATH = [cwd]
+src = Glob('*.c')
+
+
+group = DefineGroup('audio', src, depend = [''],CPPPATH = CPPPATH, LOCAL_CPPPATH = path_inc)
+Return('group')
