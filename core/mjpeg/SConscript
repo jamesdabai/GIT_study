@@ -1,0 +1,22 @@
+Import('rtconfig')
+import os
+from building import *
+
+Import('SDK_ROOT')
+Import('APP_ROOT')
+
+path_inc = [APP_ROOT + '/common/inc']
+path_inc += [SDK_ROOT + '/extlib/inc']
+path_inc += [SDK_ROOT + '/extlib']
+path_inc += [SDK_ROOT + '/extlib/inc/isp']
+path_inc += [SDK_ROOT]
+
+#src = Glob('*.c')
+src = Split('''
+	mjpeg_server.c
+	sample_mjpeg.c
+''')
+
+
+group = DefineGroup('sample_mjpeg', src, depend = ['RT_USING_SAMPLE_MJPEG'], LOCAL_CPPPATH = path_inc)
+Return('group')
